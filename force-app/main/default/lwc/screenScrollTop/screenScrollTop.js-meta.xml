@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>screenScrollTop</masterLabel>
+        <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property
+                name="isInvalid"
+                type="Boolean"
+                label="自動スクロール無効化フラグ"
+                description="Trueの場合、この画面では自動スクロールを行いません。デフォルト値はFalseです。"
+                default="false" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
