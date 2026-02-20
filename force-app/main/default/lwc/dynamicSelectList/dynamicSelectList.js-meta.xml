@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>選択リスト（テキストコレクション）</masterLabel>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="label" type="String" label="表示ラベル" role="inputOnly"/>
+            <property name="inputOptions" type="String[]" label="選択リスト値" description="選択リストをテキストコレクションで設定してください。" role="inputOnly"/>
+            <property name="isRequired" type="Boolean" label="必須" default="false" role="inputOnly"/>
+            <property name="isMultiSelect" type="Boolean" label="複数選択可能" default="false" description="trueの場合、複数選択が可能になります。" role="inputOnly"/>
+            <property name="isRetainState" type="Boolean" label="初期値を保存する" default="true" role="inputOnly"/>
+
+            <property name="defaultSingleValue" type="String" label="デフォルト値（単一選択用）"  role="inputOnly"/>
+            <property name="defaultMultiValues" type="String[]" label="デフォルト値（複数選択用）"  role="inputOnly"/>
+
+            <property name="selectedValue" type="String" label="選択値（単一）" role="outputOnly" />
+            <property name="selectedValues" type="String[]" label="選択値（複数）" role="outputOnly" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,87 @@
+<template>
+    <template if:true={errorMessage}>
+        <div class="slds-text-color_error slds-text-align_center">
+            {errorMessage}
+        </div>
+    </template>
+    <lightning-card title={cardTitle} icon-name="standard:quotes">
+        <div class="card-content">
+            <div class="slds-p-horizontal_small slds-p-vertical_small table-area">
+                <template if:true={isLoading}>
+                    <lightning-spinner alternative-text="読み込み中"></lightning-spinner>
+                </template>
+
+                <template if:false={isLoading}>
+                    <template if:true={lineItems.length}>
+                        <div class="table-scroll-container">
+                            <table class="slds-table slds-table_cell-buffer slds-table_bordered table-wide">
+                                <colgroup>
+                                    <col style="width:2.5rem;"/>
+                                    <col style="width:3rem;"/>
+                                    <template for:each={columnWidths} for:item="colWidth">
+                                        <col key={colWidth.key} style={colWidth.style}/>
+                                    </template>
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="width:2.5rem;"></th>
+                                        <th scope="col" style="width:3rem;">No</th>
+                                        <template for:each={columns} for:item="col" for:index="colIndex">
+                                            <th key={col.fieldApi} scope="col" class="resizable-th">
+                                                <div class="th-wrap">
+                                                    <span class="th-label">{col.label}</span>
+                                                    <span class="col-resizer"
+                                                        data-index={colIndex}
+                                                        onmousedown={handleResizeStart}></span>
+                                                </div>
+                                            </th>
+                                        </template>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template for:each={lineItems} for:item="row" for:index="index">
+                                        <tr key={row.id}
+                                            draggable="true"
+                                            data-index={index}
+                                            ondragstart={handleDragStart}
+                                            ondragover={handleDragOver}
+                                            ondrop={handleDrop}>
+                                            <td class="slds-text-align_center drag-icon-container">
+                                                <lightning-icon 
+                                                    icon-name="utility:rows"
+                                                    variant="bare"
+                                                    size="x-small"
+                                                    alternative-text="ドラッグして並び替え"
+                                                    class="drag-icon slds-icon-text-default">
+                                                </lightning-icon>
+                                            </td>
+                                            <td>{row.displayOrder}</td>
+                                            <template for:each={row.cells} for:item="cell">
+                                                <td key={cell.fieldApi} class="col-wide">
+                                                    {cell.value}
+                                                </td>
+                                            </template>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+                    </template>
+
+                    <template if:false={lineItems.length}>
+                        <p class="slds-text-body_regular slds-m-top_small">
+                            明細がありません。
+                        </p>
+                    </template>
+                </template>
+            </div>   
+            <div class="slds-p-horizontal_small slds-p-vertical_small slds-align_absolute-center button-area">
+                <lightning-button
+                    variant="brand"
+                    label="並び順を保存"
+                    onclick={handleSave}>
+                </lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>
