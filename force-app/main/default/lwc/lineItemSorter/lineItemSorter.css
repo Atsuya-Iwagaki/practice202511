@@ -1,0 +1,83 @@
+.table-wide {
+    table-layout: fixed;
+    width: max-content;
+    min-width: 100%;
+}
+
+.col-wide {
+    min-width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.resizable-th {
+    position: relative;
+    padding-right: 8px;
+}
+
+.th-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.th-label {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.col-resizer {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 8px;
+    height: 100%;
+    cursor: col-resize;
+    user-select: none;
+}
+
+/*ドラッグ可能な行スタイル*/
+.draggable-row{
+    cursor: move;
+}
+
+/*アイコン部分のスタイル*/
+.drag-handle{
+    cursor: grab;
+}
+
+.drag-handle:active {
+    cursor: grabbing; /* 掴んでいる間の表示 */
+}
+
+.drag-icon-container{
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+}
+
+/*テーブル部分のスクロール、保存ボタンを常に表示*/
+.card-content{
+    display: flex;
+    flex-direction: column;
+    max-height: 60vh;
+    overflow: hidden;
+}
+
+.table-area{
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.table-scroll-container{
+    display: flex;
+}
+
+.button-area{
+    flex-shrink: 0;
+}
+

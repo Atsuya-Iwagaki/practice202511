@@ -1,0 +1,27 @@
+<template>
+    <div class="slds-p-around_small">
+        <template lwc:if={isMultiSelect}>
+            <lightning-dual-listbox
+                name="multiSelect"
+                label={label}
+                source-label="選択可能"
+                selected-label="選択済み"
+                value={selectedValues}
+                options={formattedOptions}
+                onchange={handleChange}
+                required={isRequired}>
+            </lightning-dual-listbox>
+        </template>
+
+        <template lwc:else>
+            <lightning-combobox
+                name="singleSelect"
+                label={label}
+                value={selectedValue}
+                options={formattedOptions}
+                onchange={handleChange}
+                required={isRequired}>
+            </lightning-combobox>
+        </template>
+    </div>
+</template>
